@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("index",index);
                 txNip.setText("");
                 txPassword.setText("");
+                startActivity(intent);
             }else{
                 Toast.makeText(this,"Password Incorrecto Intente Nuevamente",Toast.LENGTH_LONG).show();
                 txPassword.setText("");
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("password",pass);
             txNip.setText("");
             txPassword.setText("");
+            startActivity(intent);
         }
     }
 }
