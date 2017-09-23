@@ -57,9 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 existe=true;
                 if(u.password.equals(pass)){
                     passOk=true;
-                    index=lista.indexOf(u);
+                    index=this.lista.indexOf(u);
+                    break;
                 }
-                break;
+
             }
         }
         if(existe){

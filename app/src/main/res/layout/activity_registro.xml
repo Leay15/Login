@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ingresa Nip"
-        android:id="@+id/txNip"/>
+        android:id="@+id/txNip"
+        android:inputType="number"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

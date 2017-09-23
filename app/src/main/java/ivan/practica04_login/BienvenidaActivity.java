@@ -18,22 +18,19 @@ public class BienvenidaActivity extends AppCompatActivity {
     TextView tvNip,tvCarrera,tvCiudad;
     ListView usuarios;
     Button btnSalir;
-    ArrayList<Usuario> lista = ((Practica04_Login)getApplicationContext()).listaGlobal;
-    ArrayList<String> listaUsuarios;
-    int index;
+    ArrayList<Usuario> lista ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bienvenida);
-        index=getIntent().getExtras().getInt("index");
-        colocarDatos(index);
         tvNip = (TextView)findViewById(R.id.tvNip);
         tvCarrera= (TextView)findViewById(R.id.tvCarrera);
         tvCarrera=(TextView)findViewById(R.id.tvCiudad);
         usuarios = (ListView)findViewById(R.id.listUsuarios);
         btnSalir = (Button)findViewById(R.id.btnSalir);
-
+        lista = ((Practica04_Login)getApplicationContext()).listaGlobal;
         btnSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,7 +38,8 @@ public class BienvenidaActivity extends AppCompatActivity {
             }
         });
         llenarListView();
-
+        String index=getIntent().getExtras().getString("index");
+        colocarDatos(Integer.parseInt(index));
         usuarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -60,9 +58,9 @@ public class BienvenidaActivity extends AppCompatActivity {
 
     private void clickList(int i) {
 
-        tvNip.setText(lista.get(i).nip);
-        tvCarrera.setText(lista.get(i).carrera);
-        tvCiudad.setText(lista.get(i).ciudad);
+        tvNip.setText(lista.get(i).nip.toString());
+        tvCarrera.setText(lista.get(i).carrera.toString());
+        tvCiudad.setText(lista.get(i).ciudad.toString());
 
     }
 

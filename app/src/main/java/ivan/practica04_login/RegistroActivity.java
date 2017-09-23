@@ -17,20 +17,19 @@ public class RegistroActivity extends AppCompatActivity {
     EditText txNip,txPassword,txCarrera,txCiudad;
     Button btnGuardar,btnRegresar;
 
-    ArrayList<Usuario> lista = ((Practica04_Login)getApplicationContext()).listaGlobal;
+    ArrayList<Usuario> lista ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-
+        lista = ((Practica04_Login)getApplicationContext()).listaGlobal;
         txNip = (EditText)findViewById(R.id.txNip);
         txPassword = (EditText)findViewById(R.id.txPassword);
         txCarrera = (EditText)findViewById(R.id.txCarrera);
         txCiudad = (EditText)findViewById(R.id.txCiudad);
         btnGuardar = (Button)findViewById(R.id.btnGuardar);
         btnRegresar = (Button)findViewById(R.id.btnRegresar);
-
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +57,7 @@ public class RegistroActivity extends AppCompatActivity {
             String nip = txNip.getText().toString();
             boolean existe=false;
             for (Usuario u : lista) {
-                if (u.nip.equals("nip")){
+                if (u.nip.equals(nip)){
                     existe=true;
                     break;
                 }
