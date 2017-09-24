@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class BienvenidaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bienvenida);
         tvNip = (TextView)findViewById(R.id.tvNip);
         tvCarrera= (TextView)findViewById(R.id.tvCarrera);
-        tvCarrera=(TextView)findViewById(R.id.tvCiudad);
+        tvCiudad=(TextView)findViewById(R.id.tvCiudad);
         usuarios = (ListView)findViewById(R.id.listUsuarios);
         btnSalir = (Button)findViewById(R.id.btnSalir);
         lista = ((Practica04_Login)getApplicationContext()).listaGlobal;
@@ -38,8 +39,7 @@ public class BienvenidaActivity extends AppCompatActivity {
             }
         });
         llenarListView();
-        String index=getIntent().getExtras().getString("index");
-        colocarDatos(Integer.parseInt(index));
+        mostrarDatos();
         usuarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -49,18 +49,21 @@ public class BienvenidaActivity extends AppCompatActivity {
 
     }
 
-    private void colocarDatos(int index) {
-        Usuario u = lista.get(index);
-        tvNip.setText(u.nip);
-        tvCarrera.setText(u.carrera);
-        tvCiudad.setText(u.ciudad);
+    private void mostrarDatos() {
+        try{
+            tvNip.setText(getIntent().getExtras().getString("nip"));
+            tvCarrera.setText(getIntent().getExtras().getString("carrera"));
+            tvCiudad.setText(getIntent().getExtras().getString("ciudad"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void clickList(int i) {
 
-        tvNip.setText(lista.get(i).nip.toString());
-        tvCarrera.setText(lista.get(i).carrera.toString());
-        tvCiudad.setText(lista.get(i).ciudad.toString());
+        tvNip.setText(lista.get(i).nip);
+        tvCarrera.setText(lista.get(i).carrera);
+        tvCiudad.setText(lista.get(i).ciudad);
 
     }
 
@@ -71,9 +74,9 @@ public class BienvenidaActivity extends AppCompatActivity {
     private void llenarListView() {
         ArrayList<String> nips = new ArrayList<>();
         for(Usuario u:lista){
-            nips.add(u.nip+"\t"+u.carrera + "\t" + u.ciudad);
+            nips.add(u.nip);
         }
-        ArrayAdapter<String> adapterList = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,nips);
+        ArrayAdapter<String> adapterList = new ArrayAdapter<>(this,android.R.layout.simple_list_item_2,nips);
         usuarios.setAdapter(adapterList);
     }
 }

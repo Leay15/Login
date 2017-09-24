@@ -74,6 +74,10 @@ public class RegistroActivity extends AppCompatActivity {
                 user.ciudad=txCiudad.getText().toString();
                 lista.add(user);
 
+                txNip.setText("");
+                txPassword.setText("");
+                txCarrera.setText("");
+                txCiudad.setText("");
                 Toast.makeText(this,"Usuario Registrado Con Exito",Toast.LENGTH_LONG).show();
 
             }

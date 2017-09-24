@@ -51,22 +51,24 @@ public class MainActivity extends AppCompatActivity {
         String pass =txPassword.getText().toString();
         boolean existe=false;
         boolean passOk=false;
-        int index=0;
+        Usuario us=null;
         for(Usuario u:lista){
             if(u.nip.equals(nip)){
                 existe=true;
                 if(u.password.equals(pass)){
                     passOk=true;
-                    index=this.lista.indexOf(u);
-                    break;
+                    us=u;
                 }
-
+                break;
             }
+
         }
         if(existe){
             if(passOk){
                 Intent intent = new Intent(this,BienvenidaActivity.class);
-                intent.putExtra("index",index);
+                intent.putExtra("nip",us.nip);
+                intent.putExtra("carrera",us.carrera);
+                intent.putExtra("ciudad",us.ciudad);
                 txNip.setText("");
                 txPassword.setText("");
                 startActivity(intent);
