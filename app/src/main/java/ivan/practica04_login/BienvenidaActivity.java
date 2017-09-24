@@ -60,11 +60,9 @@ public class BienvenidaActivity extends AppCompatActivity {
     }
 
     private void clickList(int i) {
-
         tvNip.setText(lista.get(i).nip);
         tvCarrera.setText(lista.get(i).carrera);
         tvCiudad.setText(lista.get(i).ciudad);
-
     }
 
     private void salir() {
@@ -76,7 +74,7 @@ public class BienvenidaActivity extends AppCompatActivity {
         for(Usuario u:lista){
             nips.add(u.nip);
         }
-        ArrayAdapter<String> adapterList = new ArrayAdapter<>(this,android.R.layout.simple_list_item_2,nips);
+        ArrayAdapter<String> adapterList = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,nips);
         usuarios.setAdapter(adapterList);
     }
 }
